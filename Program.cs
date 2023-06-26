@@ -30,10 +30,15 @@ internal class Program
         //db.InsertDocument("Persons", person);
 
         // Read data from the db.
-        foreach (var document in db.LoadDocuments<Person>("Persons"))
-        {
-            Console.WriteLine(document);
-        }
+        var persons = db.LoadDocuments<Person>("Persons");
+        //foreach (var p in persons)
+        //{
+        //    Console.WriteLine(p);
+        //}
+
+        var foundPerson = db.LoadDocument<Person>("Persons", new Guid("24d8b1af-9cc3-4c87-9da8-7fcf33751e26"));
+
+        Console.WriteLine($"Found person: {foundPerson}");
 
         Console.WriteLine("The app finished running...");
         Console.ReadLine();
@@ -71,13 +76,11 @@ public class MongoCRUD
         return collection.Find(new BsonDocument()).ToList();
     }
 
-    // Update record in the db.
-    //public void UpdateRecord<T>(string tableName, T record)
-    //{
+    public T LoadDocument<T>(string collectionName, Guid id)
+    {
+        var collection = _db.GetCollection<T>(collectionName);
+        var filter = Builders<T>.Filter.Eq("Id", id);
 
-    //}
-
-
-
-
+        return collection.Find(filter).FirstOrDefault();
+    }
 }
