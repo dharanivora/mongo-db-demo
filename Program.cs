@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using mongo_db_demo.Models;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 internal class Program
 {
@@ -11,11 +13,27 @@ internal class Program
         var db = new MongoCRUD("AddressBook");
 
         // Insert data into the db.
-        db.InsertRecord("Persons", new Person
+        var person = new Person
         {
-            FirstName = "Cherry",
-            LastName = "Blueberry"
-        });
+            FirstName = "Rose",
+            LastName = "Tree",
+            PrimaryAddress = new Address
+            {
+                Street = "101 Oak tree",
+                City = "Toronto",
+                ZipCode = "1H7 6Q0",
+                Priovince = "ON",
+                Country = "CA"
+            }
+        };
+
+        //db.InsertDocument("Persons", person);
+
+        // Read data from the db.
+        foreach (var document in db.LoadDocuments<Person>("Persons"))
+        {
+            Console.WriteLine(document);
+        }
 
         Console.WriteLine("The app finished running...");
         Console.ReadLine();
@@ -32,12 +50,33 @@ public class MongoCRUD
         _db = client.GetDatabase(dbName);
     }
 
-    // Create data in the db.
-    public void InsertRecord<T>(string tableName, T record)
+    // Insert record data in the db.
+    public void InsertDocument<T>(string collectionName, T document)
     {
-        var collection = _db.GetCollection<T>(tableName);
-        collection.InsertOne(record);
+        var collection = _db.GetCollection<T>(collectionName);
+        collection.InsertOne(document);
     }
+
+    public void InsertDocuments<T>(string collectionName, IEnumerable<T> document)
+    {
+        var collection = _db.GetCollection<T>(collectionName);
+        collection.InsertMany(document);
+    }
+
+    // Read data from the db
+    public IEnumerable<T> LoadDocuments<T>(string collectionName)
+    {
+        var collection = _db.GetCollection<T>(collectionName);
+
+        return collection.Find(new BsonDocument()).ToList();
+    }
+
+    // Update record in the db.
+    //public void UpdateRecord<T>(string tableName, T record)
+    //{
+
+    //}
+
 
 
 
