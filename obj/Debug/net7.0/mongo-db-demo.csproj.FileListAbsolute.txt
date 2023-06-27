@@ -1,8 +1,3 @@
-C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.csproj.AssemblyReference.cache
-C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.AssemblyInfoInputs.cache
-C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.AssemblyInfo.cs
-C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.csproj.CoreCompileInputs.cache
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\mongo-db-demo.exe
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\mongo-db-demo.deps.json
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\mongo-db-demo.runtimeconfig.json
@@ -22,6 +17,11 @@ C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\Zst
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
+C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.csproj.AssemblyReference.cache
+C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.AssemblyInfoInputs.cache
+C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.AssemblyInfo.cs
+C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.csproj.CoreCompileInputs.cache
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.csproj.CopyComplete
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\mongo-db-demo.dll
 C:\Users\gdo8o\OneDrive\Dharani\projects\.net\mongo-db-demo\obj\Debug\net7.0\refint\mongo-db-demo.dll

@@ -15,14 +15,15 @@ internal class Program
         // Insert data into the db.
         var person = new Person
         {
-            FirstName = "Rose",
-            LastName = "Tree",
+            FirstName = "Plant",
+            LastName = "Green",
+            Phone = "1234567890",
             PrimaryAddress = new Address
             {
-                Street = "101 Oak tree",
+                Street = "102 Oak tree",
                 City = "Toronto",
-                ZipCode = "1H7 6Q0",
-                Priovince = "ON",
+                ZipCode = "1H7 6Q6",
+                Province = "ON",
                 Country = "CA"
             }
         };
@@ -31,14 +32,25 @@ internal class Program
 
         // Read data from the db.
         var persons = db.LoadDocuments<Person>("Persons");
-        //foreach (var p in persons)
-        //{
-        //    Console.WriteLine(p);
-        //}
+        foreach (var p in persons)
+        {
+            Console.WriteLine(p);
+        }
 
         var foundPerson = db.LoadDocument<Person>("Persons", new Guid("24d8b1af-9cc3-4c87-9da8-7fcf33751e26"));
 
         Console.WriteLine($"Found person: {foundPerson}");
+
+        // Upsert data into the db.
+        foundPerson.Phone = "1234567990";
+        foundPerson.FirstName = "Green";
+
+        foundPerson.PrimaryAddress ??= new Address
+            {
+                Province = "MB"
+            };
+
+        db.UpsertDocument("Persons", foundPerson.Id, foundPerson);
 
         Console.WriteLine("The app finished running...");
         Console.ReadLine();
@@ -62,7 +74,7 @@ public class MongoCRUD
         collection.InsertOne(documents);
     }
 
-    public void InsertDocuments<T>(string collectionName, IEnumerable<T> document)
+    public void InsertDocuments<T>(string collectionName, IEnumerable<T> documents)
     {
         var collection = _db.GetCollection<T>(collectionName);
         collection.InsertMany(documents);
@@ -82,5 +94,15 @@ public class MongoCRUD
         var filter = Builders<T>.Filter.Eq("Id", id);
 
         return collection.Find(filter).FirstOrDefault();
+    }
+
+    public void UpsertDocument<T>(string collectionName, Guid id, T document)
+    {
+        var collection = _db.GetCollection<T>(collectionName);
+
+        collection.ReplaceOne(
+            filter: new BsonDocument("_id", id),
+            replacement: document,
+            options: new ReplaceOptions { IsUpsert = true });
     }
 }

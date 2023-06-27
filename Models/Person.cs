@@ -12,6 +12,8 @@ public class Person
 
     public string LastName { get; set; } = default!;
 
+    public string? Phone { get; set; }
+
     public Address PrimaryAddress { get; set; } = default!;
 
     public override string ToString()

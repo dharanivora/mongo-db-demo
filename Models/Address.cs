@@ -15,7 +15,7 @@ public class Address
 
     public string ZipCode { get; set; } = default!;
         
-    public string Priovince { get; set; } = default!;
+    public string Province { get; set; } = default!;
 
     public string Country { get; set; } = default!;
 
