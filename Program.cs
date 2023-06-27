@@ -56,16 +56,16 @@ public class MongoCRUD
     }
 
     // Insert record data in the db.
-    public void InsertDocument<T>(string collectionName, T document)
+    public void InsertDocument<T>(string collectionName, T documents)
     {
         var collection = _db.GetCollection<T>(collectionName);
-        collection.InsertOne(document);
+        collection.InsertOne(documents);
     }
 
     public void InsertDocuments<T>(string collectionName, IEnumerable<T> document)
     {
         var collection = _db.GetCollection<T>(collectionName);
-        collection.InsertMany(document);
+        collection.InsertMany(documents);
     }
 
     // Read data from the db
