@@ -1,4 +1,5 @@
-﻿using mongo_db_demo.Models;
+﻿using System.Data.Common;
+using mongo_db_demo.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -13,11 +14,13 @@ internal class Program
         var db = new MongoCRUD("AddressBook");
 
         // Insert data into the db.
+        var id = new Guid("24d8b1af-9cc3-4c87-9da8-7fcf33751e27");
         var person = new Person
         {
+            Id = id,
             FirstName = "Plant",
             LastName = "Green",
-            Phone = "1234567890",
+            Phone = "9994567890",
             PrimaryAddress = new Address
             {
                 Street = "102 Oak tree",
@@ -51,6 +54,11 @@ internal class Program
             };
 
         db.UpsertDocument("Persons", foundPerson.Id, foundPerson);
+
+        db.UpsertDocument("Persons", id, person);
+
+        // Delete data from the db.
+        db.DeleteDocument<Person>("Persons", id);
 
         Console.WriteLine("The app finished running...");
         Console.ReadLine();
@@ -104,5 +112,11 @@ public class MongoCRUD
             filter: new BsonDocument("_id", id),
             replacement: document,
             options: new ReplaceOptions { IsUpsert = true });
+    }
+
+    public void DeleteDocument<T>(string collectionName, Guid id)
+    {
+        var collection = _db.GetCollection<T>(collectionName);
+        collection.DeleteOne(new BsonDocument("_id", id));
     }
 }
